@@ -8,7 +8,7 @@ data class HourlyWeatherDetails(
     @field:Json(name = "main")
     val currentWeather: WeatherDetails,
     @field:Json(name = "weather")
-    val weather: List<WeatherInfo>,
+    val hourlyWeather: List<WeatherInfo>,
     @field:Json(name = "pop")
     val probabilityOfPrecipitation: Double
 )

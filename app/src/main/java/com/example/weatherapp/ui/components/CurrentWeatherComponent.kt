@@ -31,7 +31,8 @@ fun CurrentWeatherComponent(
             ) {
                 Column(
                     modifier = Modifier
-                        .padding(16.dp),
+                        .padding(16.dp)
+                        .weight(1f),
                     horizontalAlignment = Alignment.Start
                 ) {
                     //Temperature
@@ -47,10 +48,10 @@ fun CurrentWeatherComponent(
 
                     //Description
                     Text(
-                        text = data.listOfHourlyWeather[0].weather[0].description,
+                        text = data.listOfHourlyWeather[0].hourlyWeather[0].description,
                         modifier = Modifier.align(
                             Alignment.Start
-                        ),fontSize = 20.sp,
+                        ), fontSize = 20.sp,
                         color = Color.White
                     )
                     Spacer(modifier = Modifier.height(16.dp))
@@ -60,7 +61,7 @@ fun CurrentWeatherComponent(
                         text = "Feels like ${data.listOfHourlyWeather[0].currentWeather.feelsLike.toInt()}°F",
                         modifier = Modifier.align(
                             Alignment.Start
-                        ),fontSize = 20.sp,
+                        ), fontSize = 20.sp,
                         color = Color.White
                     )
                     Spacer(modifier = Modifier.height(32.dp))
@@ -76,11 +77,18 @@ fun CurrentWeatherComponent(
                     )
                 }
 
-                Column(modifier = Modifier.fillMaxWidth().padding(16.dp), horizontalAlignment = Alignment.End) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp)
+                        .weight(1f),
+                    horizontalAlignment = Alignment.End
+                ) {
+                    //Weather Icon
                     Image(
-                        painter = rememberAsyncImagePainter(data.listOfHourlyWeather[0].weather[0].icon),
+                        painter = rememberAsyncImagePainter(data.listOfHourlyWeather[0].hourlyWeather[0].icon),
                         contentDescription = null,
-                        modifier = Modifier.size(200.dp)
+                        modifier = Modifier.size(250.dp)
                     )
                 }
             }
